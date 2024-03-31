@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "eEUbc83U0+LV6dntLZbsejKzMUFyYXWB4MdyfpCY7Gzxp3gilzx4kmHTDjKmNktGui7IiMe86nklP0Bnp4DBwQ==",
+  "dgSpecHash": "FGYWLiQsAMHSvw+itvSQE4nm9+ziNEAQuZu9hxrLgXX3TczXc9R+JHvLLHuY1+d8IUM2SA42OYoSJ4Ck8O+1cQ==",
   "success": true,
   "projectFilePath": "/Users/els/Desktop/lab2/back/back.csproj",
   "expectedPackageFiles": [
+    "/Users/els/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
     "/Users/els/.nuget/packages/microsoft.aspnetcore.antiforgery/2.2.0/microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",
     "/Users/els/.nuget/packages/microsoft.aspnetcore.authentication/2.2.0/microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "/Users/els/.nuget/packages/microsoft.aspnetcore.authentication.abstractions/2.2.0/microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
@@ -59,6 +60,7 @@
     "/Users/els/.nuget/packages/microsoft.entityframeworkcore/6.0.10/microsoft.entityframeworkcore.6.0.10.nupkg.sha512",
     "/Users/els/.nuget/packages/microsoft.entityframeworkcore.abstractions/6.0.10/microsoft.entityframeworkcore.abstractions.6.0.10.nupkg.sha512",
     "/Users/els/.nuget/packages/microsoft.entityframeworkcore.analyzers/6.0.10/microsoft.entityframeworkcore.analyzers.6.0.10.nupkg.sha512",
+    "/Users/els/.nuget/packages/microsoft.entityframeworkcore.design/6.0.10/microsoft.entityframeworkcore.design.6.0.10.nupkg.sha512",
     "/Users/els/.nuget/packages/microsoft.entityframeworkcore.relational/6.0.10/microsoft.entityframeworkcore.relational.6.0.10.nupkg.sha512",
     "/Users/els/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "/Users/els/.nuget/packages/microsoft.extensions.caching.abstractions/6.0.0/microsoft.extensions.caching.abstractions.6.0.0.nupkg.sha512",

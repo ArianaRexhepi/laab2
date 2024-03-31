@@ -45,3 +45,5 @@
 /Users/els/Desktop/lab2/back/obj/Debug/net6.0/back.pdb
 /Users/els/Desktop/lab2/back/obj/Debug/net6.0/back.genruntimeconfig.cache
 /Users/els/Desktop/lab2/back/obj/Debug/net6.0/ref/back.dll
+/Users/els/Desktop/lab2/back/bin/Debug/net6.0/Humanizer.dll
+/Users/els/Desktop/lab2/back/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Design.dll

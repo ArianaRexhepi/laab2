@@ -1,4 +1,25 @@
+using back.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using back.Models;
+using Data;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+
 var builder = WebApplication.CreateBuilder(args);
+
+var connectionString = builder.Configuration.GetConnectionString("MySqlConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+
+builder.Services.AddDbContext<ApplicationDbContext>(options => 
+options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+builder.Services.AddIdentityCore<AppUser>(o =>
+{
+    o.Password.RequireNonAlphanumeric = false;
+})
+.AddRoles<IdentityRole>()
+.AddEntityFrameworkStores<ApplicationDbContext>()
+.AddSignInManager<SignInManager<AppUser>>();
 
 // Add services to the container.
 
