@@ -6,7 +6,7 @@ using back.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace backend.Data
+namespace back.Data
 {
     public class ApplicationDbContext : IdentityDbContext<AppUser>
     {
