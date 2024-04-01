@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace back.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<AppUser>
+    public class AppDbContext : IdentityDbContext<AppUser>
     {
-        public ApplicationDbContext(DbContextOptions options) : base(options)
+        public AppDbContext(DbContextOptions options) : base(options)
         {
         }
 

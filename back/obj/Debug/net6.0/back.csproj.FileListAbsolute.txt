@@ -78,3 +78,5 @@
 /Users/els/Desktop/lab2/back/bin/Debug/net6.0/runtimes/win/lib/netstandard2.0/System.Runtime.Caching.dll
 /Users/els/Desktop/lab2/back/bin/Debug/net6.0/runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll
 /Users/els/Desktop/lab2/back/bin/Debug/net6.0/runtimes/win/lib/netcoreapp3.0/System.Windows.Extensions.dll
+/Users/els/Desktop/lab2/back/bin/Debug/net6.0/System.Net.Http.Formatting.dll
+/Users/els/Desktop/lab2/back/bin/Debug/net6.0/System.Web.Http.dll
