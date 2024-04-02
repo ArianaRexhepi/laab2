@@ -1,4 +1,4 @@
-namespace backend.DTO
+namespace back.DTO
 {
     public class AppUserDto
     {
