@@ -13,13 +13,13 @@ var connectionString = builder.Configuration.GetConnectionString("MySqlConnectio
 
 builder.Services.AddDbContext<AppDbContext>(options => 
 options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
-builder.Services.AddIdentityCore<AppUser>(o =>
-{
-    o.Password.RequireNonAlphanumeric = false;
-})
-.AddRoles<IdentityRole>()
-.AddEntityFrameworkStores<AppDbContext>()
-.AddSignInManager<SignInManager<AppUser>>();
+// builder.Services.AddIdentityCore<AppUser>(o =>
+// {
+//     o.Password.RequireNonAlphanumeric = false;
+// })
+// .AddRoles<IdentityRole>()
+// .AddEntityFrameworkStores<AppDbContext>()
+// .AddSignInManager<SignInManager<AppUser>>();
 
 // Add services to the container.
 
@@ -43,20 +43,20 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-using var scope = app.Services.CreateScope();
-var services = scope.ServiceProvider;
-try
-{
-    var userManager = services.GetRequiredService<UserManager<AppUser>>();
-    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+// using var scope = app.Services.CreateScope();
+// var services = scope.ServiceProvider;
+// try
+// {
+//     var userManager = services.GetRequiredService<UserManager<AppUser>>();
+//     var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
 
-    await Seed.SeedAdminAsync(userManager, roleManager);
+//     await Seed.SeedAdminAsync(userManager, roleManager);
 
-    Console.WriteLine("-------->Data seeded successfully.");
-}
-catch (Exception ex)
-{
-    Console.WriteLine(ex.Message);
-}
+//     Console.WriteLine("-------->Data seeded successfully.");
+// }
+// catch (Exception ex)
+// {
+//     Console.WriteLine(ex.Message);
+// }
 
 app.Run();
