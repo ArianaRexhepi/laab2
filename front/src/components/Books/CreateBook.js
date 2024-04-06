@@ -31,9 +31,9 @@ function CreateBook() {
 
     try {
       console.log(newBook);
-      await axios.post("http://localhost:5267/api/book", newBook).then(() => {
+      await axios.post("/book", newBook).then(() => {
         setLoading(false);
-        navigate("/books");
+        navigate("/booklist");
       });
     } catch (error) {
       console.error(error);
@@ -46,7 +46,7 @@ function CreateBook() {
         <form className="form" onSubmit={handleSubmit}>
           <div className="modal-header">
             <h4 className="modal-title">Add Book</h4>
-            <Link to="/books">
+            <Link to="/booklist">
               <button
                 type="button"
                 className="btn-close"
@@ -129,7 +129,7 @@ function CreateBook() {
             </div>
           </div>
           <div className="modal-footer">
-            <Link to="/books">
+            <Link to="/booklist">
               <input type="button" className="btn btn-danger" value="Dismiss" />
             </Link>
             <input

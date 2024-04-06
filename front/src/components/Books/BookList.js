@@ -7,7 +7,7 @@ function BookList() {
 
   useEffect(() => {
     const fetch = async () => {
-      const res = await axios.get('http://localhost:5267/api/books');
+      const res = await axios.get('book');
       setBooks(res.data);
     };
     fetch();
@@ -16,7 +16,7 @@ function BookList() {
   const handleDelete = async (id) => {
     const confirmed = window.confirm('Are you sure you want to delete this book?');
     if (confirmed) {
-      await axios.delete(`http://localhost:5267/api/books/${id}`);
+      await axios.delete(`/book/${id}`);
       setBooks(books.filter(book => book.id !== id));
     }
   };
