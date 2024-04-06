@@ -4,7 +4,6 @@ using back.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
-using back.Models;
 
 namespace back.Controllers
 {
