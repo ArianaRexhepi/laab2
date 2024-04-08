@@ -6,11 +6,12 @@ import ReactQuill from "react-quill";
 function CreateBook() {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
-  const [content, setContent] = useState("");
+  const [rating, setRating] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
   const [year, setYear] = useState(new Date());
-  const [genre, setGenre] = useState("");
+  const [category, setCategory] = useState("");
+  const [price, setPrice] = useState("");
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
@@ -22,11 +23,12 @@ function CreateBook() {
     const books = {
       title: title,
       author: author,
-      content: content,
-      genre: genre,
+      category: category,
+      rating: rating,
       year: year,
       description: description,
       image: image,
+      price:price
     };
 
     console.log(books);
@@ -77,15 +79,6 @@ function CreateBook() {
               />
             </div>
             <div className="form-group">
-              <label>Content:</label>
-              <input
-                type="text"
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-                className="form-control"
-              />
-            </div>
-            <div className="form-group">
               <label>Description:</label>
               <ReactQuill
                 className="quill-editor"
@@ -95,10 +88,10 @@ function CreateBook() {
             </div>
 
             <div className="form-group">
-              <label>Genre:</label>
+              <label>Category:</label>
               <input
-                value={genre}
-                onChange={(e) => setGenre(e.target.value)}
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
                 className="form-control"
               />
             </div>
@@ -117,6 +110,24 @@ function CreateBook() {
                 type="date"
                 value={year}
                 onChange={(e) => setYear(e.target.value)}
+                className="form-control"
+              />
+            </div>
+            <div className="form-group">
+              <label>Rating:</label>
+              <input
+                type="text"
+                value={rating}
+                onChange={(e) => setRating(e.target.value)}
+                className="form-control"
+              />
+            </div>
+            <div className="form-group">
+              <label>Price:</label>
+              <input
+                type="text"
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
                 className="form-control"
               />
             </div>
