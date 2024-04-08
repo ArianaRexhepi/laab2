@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
 
 function BookList() {
   const [books, setBooks] = useState([]);
