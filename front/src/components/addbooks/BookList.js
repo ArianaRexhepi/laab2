@@ -13,7 +13,7 @@ function BookList() {
 
   useEffect(() => {
     const fetch = async () => {
-      const res = await axios.get("/book");
+      const res = await axios.get("/books");
       setBooks(res.data);
     };
     fetch();
@@ -24,7 +24,7 @@ function BookList() {
       "Are you sure you want to delete this article?"
     );
     if (confirmed) {
-      await axios.delete(`/book/${id}`);
+      await axios.delete(`/books/${id}`);
       setBooks(books.filter((book) => book.id !== id));
     }
   };

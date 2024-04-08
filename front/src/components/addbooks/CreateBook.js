@@ -33,7 +33,7 @@ function CreateBook() {
 
     console.log(books);
     await axios
-      .post("/book", books)
+      .post("/books", books)
       .then(() => {
         navigate("/booklist");
       })

@@ -12,7 +12,7 @@ function EditBook() {
   const { id } = useParams();
 
   useEffect(() => {
-    axios.get(`book/${id}`).then((response) => {
+    axios.get(`books/${id}`).then((response) => {
       response.data.year = dayjs(response.data.year).format("YYYY-MM-DD");
       setBook(response.data);
     });
@@ -27,7 +27,7 @@ function EditBook() {
     setLoading(true);
 
     try {
-      await axios.put(`book/${id}`, book).then(() => {
+      await axios.put(`books/${id}`, book).then(() => {
         setLoading(false);
         navigate("/booklist");
       });
@@ -72,24 +72,6 @@ function EditBook() {
               />
             </div>
             <div className="form-group">
-              <label>Genre:</label>
-              <input
-                type="text"
-                className="form-control"
-                value={book.genre}
-                onChange={(e) => setBook({ ...book, genre: e.target.value })}
-              />
-            </div>
-            <div className="form-group">
-              <label>Content:</label>
-              <input
-                type="text"
-                className="form-control"
-                value={book.content}
-                onChange={(e) => setBook({ ...book, content: e.target.value })}
-              />
-            </div>
-            <div className="form-group">
               <label>Description:</label>
               {book && (
                 <ReactQuill
@@ -99,6 +81,15 @@ function EditBook() {
                 />
               )}
             </div>
+            <div className="form-group">
+              <label>Category:</label>
+              <input
+                type="text"
+                className="form-control"
+                value={book.category}
+                onChange={(e) => setBook({ ...book, category: e.target.value })}
+              />
+            </div>         
             <div className="form-group">
               <label>Image:</label>
               <input
@@ -118,6 +109,24 @@ function EditBook() {
                   console.log(e.target.value);
                   setBook({ ...book, year: e.target.value });
                 }}
+              />
+            </div>
+            <div className="form-group">
+              <label>Rating:</label>
+              <input
+                type="text"
+                className="form-control"
+                value={book.rating}
+                onChange={(e) => setBook({ ...book, rating: e.target.value })}
+              />
+            </div>
+            <div className="form-group">
+              <label>Price:</label>
+              <input
+                type="text"
+                className="form-control"
+                value={book.price}
+                onChange={(e) => setBook({ ...book, price: e.target.value })}
               />
             </div>
           </div>
