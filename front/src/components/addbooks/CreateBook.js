@@ -46,10 +46,10 @@ function CreateBook() {
   };
 
   return (
-    <div className="modal-dialog" style={{ width: 600 }}>
+    <div className="modal-dialog" style={{ width: 600, marginTop: 50}}>
       <div className="modal-content">
         <form className="form" onSubmit={handleSubmit}>
-          <div style={{ marginTop: "30px" }} className="modal-header">
+          <div style={{ marginTop: "30px" }} className="modal-header d-flex justify-content-between">
             <h4 className="modal-title">Add Article</h4>
             <Link to="/booklist">
               <button

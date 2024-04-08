@@ -42,7 +42,10 @@ function EditBook() {
     <div className="modal-dialog" style={{ width: 600, marginTop: "50px" }}>
       <div className="modal-content">
         <form className="form">
-          <div className="modal-header">
+          <div
+            style={{ marginTop: "30px" }}
+            className="modal-header d-flex justify-content-between"
+          >
             <h4 className="modal-title">Edit Article</h4>
             <Link to="/booklist">
               <button
@@ -52,6 +55,7 @@ function EditBook() {
               ></button>
             </Link>
           </div>
+
           <div style={{ marginTop: "5px" }} className="modal-body">
             <div className="form-group">
               <label>Title:</label>
@@ -89,7 +93,7 @@ function EditBook() {
                 value={book.category}
                 onChange={(e) => setBook({ ...book, category: e.target.value })}
               />
-            </div>         
+            </div>
             <div className="form-group">
               <label>Image:</label>
               <input
