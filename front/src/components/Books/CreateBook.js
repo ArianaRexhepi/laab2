@@ -26,7 +26,7 @@ function CreateBook() {
       rating: rating,
       year: year,
       image: image,
-      price: price,
+      price: price.toString(),
     };
 
     try {
