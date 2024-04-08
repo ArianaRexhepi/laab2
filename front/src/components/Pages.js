@@ -1,8 +1,9 @@
 import React from "react";
 import { Route, Routes } from "react-router";
-import BookList from "./Books/BookList";
-import CreateBook from "./Books/CreateBook";
-import EditBook from "./Books/EditBook";
+import BookList from "./addbooks/BookList";
+import EditBook from "./addbooks/EditBook";
+import CreateBook from './addbooks/CreateBook';
+
 
 const Pages = () =>{
     return(

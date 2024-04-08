@@ -1,51 +1,54 @@
-import React, { useState } from "react";
 import axios from "axios";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import ReactQuill from "react-quill";
 
 function CreateBook() {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
+  const [content, setContent] = useState("");
   const [description, setDescription] = useState("");
-  const [category, setCategory] = useState("");
-  const [rating, setRating] = useState("");
-  const [year, setYear] = useState(new Date());
   const [image, setImage] = useState("");
-  const [price, setPrice] = useState(0);
+  const [year, setYear] = useState(new Date());
+  const [genre, setGenre] = useState("");
   const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
 
-    const newBook = {
+    const books = {
       title: title,
       author: author,
-      description: description,
-      category: category,
-      rating: rating,
+      content: content,
+      genre: genre,
       year: year,
+      description: description,
       image: image,
-      price: price.toString(),
     };
 
-    try {
-      console.log(newBook);
-      await axios.post("/book", newBook).then(() => {
-        setLoading(false);
+    console.log(books);
+    await axios
+      .post("/book", books)
+      .then(() => {
         navigate("/booklist");
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        setLoading(false);
       });
-    } catch (error) {
-      console.error(error);
-    }
   };
 
   return (
     <div className="modal-dialog" style={{ width: 600 }}>
       <div className="modal-content">
         <form className="form" onSubmit={handleSubmit}>
-          <div className="modal-header">
-            <h4 className="modal-title">Add Book</h4>
+          <div style={{ marginTop: "30px" }} className="modal-header">
+            <h4 className="modal-title">Add Article</h4>
             <Link to="/booklist">
               <button
                 type="button"
@@ -54,7 +57,7 @@ function CreateBook() {
               ></button>
             </Link>
           </div>
-          <div className="modal-body">
+          <div style={{ marginTop: "10px" }} className="modal-body">
             <div className="form-group">
               <label>Title:</label>
               <input
@@ -74,38 +77,28 @@ function CreateBook() {
               />
             </div>
             <div className="form-group">
-              <label>Category:</label>
+              <label>Content:</label>
               <input
                 type="text"
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
                 className="form-control"
               />
             </div>
             <div className="form-group">
               <label>Description:</label>
-              <input
-                type="text"
+              <ReactQuill
+                className="quill-editor"
                 value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                className="form-control"
+                onChange={(value) => setDescription(value)}
               />
             </div>
+
             <div className="form-group">
-              <label>Year:</label>
+              <label>Genre:</label>
               <input
-                type="date"
-                value={year}
-                onChange={(e) => setYear(e.target.value)}
-                className="form-control"
-              />
-            </div>
-            <div className="form-group">
-              <label>Rating:</label>
-              <input
-                type="number"
-                value={rating}
-                onChange={(e) => setRating(parseInt(e.target.value))}
+                value={genre}
+                onChange={(e) => setGenre(e.target.value)}
                 className="form-control"
               />
             </div>
@@ -119,18 +112,23 @@ function CreateBook() {
               />
             </div>
             <div className="form-group">
-              <label>Price:</label>
+              <label>Year:</label>
               <input
-                type="number"
-                value={price}
-                onChange={(e) => setPrice(parseInt(e.target.value))}
+                type="date"
+                value={year}
+                onChange={(e) => setYear(e.target.value)}
                 className="form-control"
               />
             </div>
           </div>
-          <div className="modal-footer">
+          <div style={{ marginTop: "10px" }} className="modal-footer">
             <Link to="/booklist">
-              <input type="button" className="btn btn-danger" value="Dismiss" />
+              <input
+                type="button"
+                style={{ margin: "5px" }}
+                className="btn btn-danger"
+                value="Dismiss"
+              />
             </Link>
             <input
               type="submit"

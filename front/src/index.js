@@ -8,6 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import 'bootstrap/dist/css/bootstrap.css';
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import 'react-bootstrap/dist/react-bootstrap.min.js';
+import 'react-quill/dist/quill.snow.css'; 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 

@@ -10,11 +10,11 @@ namespace back.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class BookController : ControllerBase
+    public class BooksController : ControllerBase
     {
         private readonly AppDbContext _context;
 
-        public BookController(AppDbContext context)
+        public BooksController(AppDbContext context)
         {
             _context = context;
         }
