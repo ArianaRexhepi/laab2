@@ -37,20 +37,29 @@ namespace back.Controllers
             return Ok(existingBook);
         }
 
+
+        // Kur e krijon ni book e shtin te ni autor direkt dmth qekjo e kryn qat funksion e mahershum qe e komentova
         [HttpPost]
         public async Task<IActionResult> PostAsync(BookAddDto book)
         {
+            //qetu e merr autorin edhe ja shtin ose bookit autorin dmth t vyn ni autorId pej frontit
+
+            var author = await _context.Authors.FindAsync(book.AuthorId);
+            if (author == null) return BadRequest("Author Doesn't exist");
+
             var newbook = new Book
             {
                 Id = new Guid(),
                 Title = book.Title,
-                Author = book.Author,
+                Author = author,
+                AuthorId = author.Id,
                 Category = book.Category,
                 Rating = book.Rating,
                 Description = book.Description,
                 Image = book.Image,
                 Year = book.Year,
                 Price = book.Price
+
             };
 
             _context.Books.Add(newbook);

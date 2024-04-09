@@ -13,7 +13,7 @@ namespace back.Models
         [Required]
         public string Title { get; set; }
         [Required]
-        public string Author { get; set; }
+        public string AuthorName { get; set; }
         [Required]
         public string Description { get; set; }
         [Required]
@@ -26,5 +26,7 @@ namespace back.Models
         public string Image { get; set; }
         [Required]
         public int Price { get; set; }
+        public Author Author { get; set; }
+        public Guid AuthorId { get; set; }
     }
 }

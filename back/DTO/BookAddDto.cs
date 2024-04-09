@@ -11,15 +11,17 @@ namespace back.DTO
         [Required]
         public string Title { get; set; }
         [Required]
-        public string Author { get; set; }
+        public string AuthorName { get; set; }
+        [Required]
+        public string AuthorId { get; set; }
         [Required]
         public string Description { get; set; }
         [Required]
         public string Category { get; set; }
         [Required]
-         public int Rating { get; set; }
+        public int Rating { get; set; }
         [Required]
-        public DateTime Year { get; set;}
+        public DateTime Year { get; set; }
         [Required]
         public string? Image { get; set; }
         [Required]
