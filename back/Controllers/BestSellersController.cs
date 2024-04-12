@@ -10,11 +10,11 @@ namespace back.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class BestSellersController : ControllerBase
+    public class BestsellersController : ControllerBase
     {
         private readonly AppDbContext _context;
 
-        public BestSellersController(AppDbContext context)
+        public BestsellersController(AppDbContext context)
         {
             _context = context;
         }
