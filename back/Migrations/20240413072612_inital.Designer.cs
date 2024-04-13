@@ -11,7 +11,7 @@ using back.Data;
 namespace back.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240409194100_inital")]
+    [Migration("20240413072612_inital")]
     partial class inital
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -46,6 +46,46 @@ namespace back.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Authors");
+                });
+
+            modelBuilder.Entity("back.Models.BestSellers", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("AuthorName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("Year")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BestSeller");
                 });
 
             modelBuilder.Entity("back.Models.Book", b =>
@@ -91,6 +131,46 @@ namespace back.Migrations
                     b.HasIndex("AuthorId");
 
                     b.ToTable("Books");
+                });
+
+            modelBuilder.Entity("back.Models.Magazines", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("AuthorName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("Year")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Magazine");
                 });
 
             modelBuilder.Entity("back.Models.Book", b =>

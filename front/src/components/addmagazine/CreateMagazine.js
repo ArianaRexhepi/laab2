@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import ReactQuill from "react-quill";
 
-function CreateBook() {
+function CreateMagazine() {
   const [title, setTitle] = useState("");
   const [authorName, setAuthor] = useState("");
   const [rating, setRating] = useState("");
@@ -33,9 +33,9 @@ function CreateBook() {
 
     console.log(books);
     await axios
-      .post("/books", books)
+      .post("/magazines", books)
       .then(() => {
-        navigate("/booklist");
+        navigate("/magazinelist");
       })
       .catch((error) => {
         console.log(error);
@@ -51,7 +51,7 @@ function CreateBook() {
         <form className="form" onSubmit={handleSubmit}>
           <div style={{ marginTop: "30px" }} className="modal-header d-flex justify-content-between">
             <h4 className="modal-title">Add Article</h4>
-            <Link to="/booklist">
+            <Link to="/magazinelist">
               <button
                 type="button"
                 className="btn-close"
@@ -133,7 +133,7 @@ function CreateBook() {
             </div>
           </div>
           <div style={{ marginTop: "10px" }} className="modal-footer">
-            <Link to="/booklist">
+            <Link to="/magazinelist">
               <input
                 type="button"
                 style={{ margin: "5px" }}
@@ -154,4 +154,4 @@ function CreateBook() {
   );
 }
 
-export default CreateBook;
+export default CreateMagazine;

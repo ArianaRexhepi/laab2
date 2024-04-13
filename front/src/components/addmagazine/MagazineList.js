@@ -5,14 +5,14 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import ReactQuill from "react-quill";
 
-function BookList() {
+function MagazineList() {
   const [books, setBooks] = useState([]);
   const [selectedBook, setSelectedBook] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const fetch = async () => {
-      const res = await axios.get("/books");
+      const res = await axios.get("/magazines");
       setBooks(res.data);
     };
     fetch();
@@ -23,7 +23,7 @@ function BookList() {
       "Are you sure you want to delete this article?"
     );
     if (confirmed) {
-      await axios.delete(`/books/${id}`);
+      await axios.delete(`/magazines/${id}`);
       setBooks(books.filter((book) => book.id !== id));
     }
   };
@@ -39,7 +39,7 @@ function BookList() {
 
   return (
     <>
-      <h1 style={{ textAlign: "center", marginTop: "5px" }}>Books</h1>
+      <h1 style={{ textAlign: "center", marginTop: "5px" }}>Magazines</h1>
       <div className="card shadow mb-4">
         <div className="card-header py-3">
           <div
@@ -50,7 +50,7 @@ function BookList() {
             }}
             className="float-right"
           >
-            <Link to="/createbook">
+            <Link to="/createmagazine">
               <button className="btn btn-primary">Create New</button>
             </Link>
           </div>
@@ -124,7 +124,7 @@ function BookList() {
                 <td>{new Date(book.year).toLocaleDateString()}</td>
                 <td>{book.price}</td>
                 <td>
-                  <Link to={`/editbook/${book.id}`}>
+                  <Link to={`/editmagazine/${book.id}`}>
                     <button
                       style={{ margin: "5px" }}
                       className="btn btn-primary"
@@ -166,4 +166,4 @@ function BookList() {
   );
 }
 
-export default BookList;
+export default MagazineList;

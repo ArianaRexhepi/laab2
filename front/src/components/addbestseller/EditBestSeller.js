@@ -5,14 +5,14 @@ import dayjs from "dayjs";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
-function EditBook() {
+function EditBestSeller() {
   const [loading, setLoading] = useState(false);
   const [book, setBook] = useState(null);
   const navigate = useNavigate();
   const { id } = useParams();
 
   useEffect(() => {
-    axios.get(`books/${id}`).then((response) => {
+    axios.get(`bestsellers/${id}`).then((response) => {
       response.data.year = dayjs(response.data.year).format("YYYY-MM-DD");
       setBook(response.data);
     });
@@ -27,9 +27,9 @@ function EditBook() {
     setLoading(true);
 
     try {
-      await axios.put(`books/${id}`, book).then(() => {
+      await axios.put(`bestsellers/${id}`, book).then(() => {
         setLoading(false);
-        navigate("/booklist");
+        navigate("/bestsellerlist");
       });
     } catch (error) {
       console.error(error);
@@ -47,7 +47,7 @@ function EditBook() {
             className="modal-header d-flex justify-content-between"
           >
             <h4 className="modal-title">Edit Article</h4>
-            <Link to="/booklist">
+            <Link to="/bestsellerlist">
               <button
                 type="button"
                 className="btn-close"
@@ -135,7 +135,7 @@ function EditBook() {
             </div>
           </div>
           <div className="modal-footer">
-            <Link to="/booklist">
+            <Link to="/bestsellerlist">
               <input
                 type="button"
                 style={{ margin: "5px" }}
@@ -157,4 +157,4 @@ function EditBook() {
   );
 }
 
-export default EditBook;
+export default EditBestSeller;

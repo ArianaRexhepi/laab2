@@ -21,5 +21,8 @@ namespace back.Data
 
         public DbSet<Book> Books { get; set; }
         public DbSet<Author> Authors { get; set;}
+        public DbSet<BestSellers> BestSeller{get; set;}
+        public DbSet<Magazines> Magazine{get; set;}
+
     }
 }
