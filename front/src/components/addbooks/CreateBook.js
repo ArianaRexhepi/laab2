@@ -22,7 +22,7 @@ function CreateBook() {
 
     const books = {
       title: title,
-      author: author,
+      authorName: authorName,
       category: category,
       rating: rating,
       year: year,
