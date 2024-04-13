@@ -13,8 +13,6 @@ namespace back.DTO
         [Required]
         public string AuthorName { get; set; }
         [Required]
-        public string AuthorId { get; set; }
-        [Required]
         public string Description { get; set; }
         [Required]
         public string Category { get; set; }

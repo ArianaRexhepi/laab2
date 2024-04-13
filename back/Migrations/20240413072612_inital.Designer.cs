@@ -11,8 +11,8 @@ using back.Data;
 namespace back.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240411230802_Magazine")]
-    partial class Magazine
+    [Migration("20240413072612_inital")]
+    partial class inital
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
