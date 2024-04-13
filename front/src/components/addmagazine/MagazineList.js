@@ -81,7 +81,7 @@ function MagazineList() {
               <tr key={book.id}>
                 <td>{book.id}</td>
                 <td>{book.title}</td>
-                <td>{book.author}</td>
+                <td>{book.authorName}</td>
                 <td>{book.category}</td>
                 <td>
                   {book.description.length > 150 ? (

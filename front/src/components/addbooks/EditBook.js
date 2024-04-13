@@ -71,8 +71,8 @@ function EditBook() {
               <input
                 type="text"
                 className="form-control"
-                value={book.author}
-                onChange={(e) => setBook({ ...book, author: e.target.value })}
+                value={book.authorName}
+                onChange={(e) => setBook({ ...book, authorName: e.target.value })}
               />
             </div>
             <div className="form-group">

@@ -5,7 +5,7 @@ import ReactQuill from "react-quill";
 
 function CreateBook() {
   const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState("");
+  const [authorName, setAuthor] = useState("");
   const [rating, setRating] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
@@ -73,7 +73,7 @@ function CreateBook() {
               <label>Author:</label>
               <input
                 type="text"
-                value={author}
+                value={authorName}
                 onChange={(e) => setAuthor(e.target.value)}
                 className="form-control"
               />
