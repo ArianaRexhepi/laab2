@@ -3,7 +3,7 @@ namespace back.Models
     public class Review
 {
     [Required]
-    public int Guid Id { get; set; }
+    public Guid Id { get; set; }
     [Required]
     public int BookId { get; set; }
     [Required]
