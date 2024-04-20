@@ -13,7 +13,7 @@ namespace back.DTO
         [Required]
         public string UserName { get; set; }
         [Required]
-        public string Content { get; set; }
+        public string Comment { get; set; }
         [Required]
         public int Rating { get; set; }
 
