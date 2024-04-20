@@ -1,0 +1,21 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace back.DTO
+{
+    public class ReviewDto
+    { 
+        [Required]
+        public int BookId { get; set; }
+        [Required]
+        public string UserName { get; set; }
+        [Required]
+        public string Content { get; set; }
+        [Required]
+        public int Rating { get; set; }
+
+    }
+}
