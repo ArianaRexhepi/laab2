@@ -56,6 +56,11 @@ function Nav() {
                     Magazines List
                   </a>
                 </li>
+                <li>
+                  <a className="dropdown-item" href="reviewlist">
+                    Review List
+                  </a>
+                </li>
               </ul>
             </li>
           </ul>

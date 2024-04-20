@@ -9,6 +9,8 @@ import CreateBestSeller from './addbestseller/CreateBestSeller';
 import MagazineList from "./addmagazine/MagazineList";
 import EditMagazine from "./addmagazine/EditMagazine";
 import CreateMagazine from './addmagazine/CreateMagazine';
+import CreateReview from "./addReview/CreateReview";
+import ReviewList from "./addReview/ReviewList";
 const Pages = () =>{
     return(
         <>
@@ -22,6 +24,8 @@ const Pages = () =>{
         <Route path="/magazinelist" element={<MagazineList/>} />
         <Route path="/createmagazine" element={<CreateMagazine />} />
         <Route path="/editmagazine/:id" element={<EditMagazine />} />
+        <Route path="/createreview" element={<CreateReview />} />
+        <Route path="/reviewlist" element={<ReviewList/>} />
         </Routes>
         </>
     );
