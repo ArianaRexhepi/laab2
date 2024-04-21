@@ -4,32 +4,29 @@ import { Link, useNavigate } from "react-router-dom";
 import ReactQuill from "react-quill";
 
 function CreateBook() {
-  const [title, setTitle] = useState("");
-  const [authorName, setAuthor] = useState("");
-  const [rating, setRating] = useState("");
-  const [description, setDescription] = useState("");
-  const [image, setImage] = useState("");
-  const [year, setYear] = useState(new Date());
-  const [category, setCategory] = useState("");
-  const [price, setPrice] = useState("");
+  const initalbooks = {
+    title: "",
+    type: 0,
+    category: "",
+    rating: 0,
+    year: new Date(),
+    description: "",
+    image: "",
+    price: 0,
+  };
+  const [books, setBooks] = useState(initalbooks);
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setBooks({ ...books, [name]: value });
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
-
-    const books = {
-      title: title,
-      authorName: authorName,
-      category: category,
-      rating: rating,
-      year: year,
-      description: description,
-      image: image,
-      price:price
-    };
 
     console.log(books);
     await axios
@@ -46,10 +43,13 @@ function CreateBook() {
   };
 
   return (
-    <div className="modal-dialog" style={{ width: 600, marginTop: 50}}>
+    <div className="modal-dialog" style={{ width: 600, marginTop: 50 }}>
       <div className="modal-content">
         <form className="form" onSubmit={handleSubmit}>
-          <div style={{ marginTop: "30px" }} className="modal-header d-flex justify-content-between">
+          <div
+            style={{ marginTop: "30px" }}
+            className="modal-header d-flex justify-content-between"
+          >
             <h4 className="modal-title">Add Article</h4>
             <Link to="/booklist">
               <button
@@ -64,34 +64,38 @@ function CreateBook() {
               <label>Title:</label>
               <input
                 type="text"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
+                value={books.title}
+                name="title"
+                onChange={handleInputChange}
                 className="form-control"
               />
             </div>
-            <div className="form-group">
+            {/* <div className="form-group">
               <label>Author:</label>
               <input
                 type="text"
+                name=""
                 value={authorName}
-                onChange={(e) => setAuthor(e.target.value)}
+                onChange={handleInputChange}
                 className="form-control"
               />
-            </div>
+            </div> */}
             <div className="form-group">
               <label>Description:</label>
               <ReactQuill
                 className="quill-editor"
-                value={description}
-                onChange={(value) => setDescription(value)}
+                value={books.description}
+                name="description"
+                onChange={handleInputChange}
               />
             </div>
 
             <div className="form-group">
               <label>Category:</label>
               <input
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
+                value={books.category}
+                name="category"
+                onChange={handleInputChange}
                 className="form-control"
               />
             </div>
@@ -99,8 +103,9 @@ function CreateBook() {
               <label>Image:</label>
               <input
                 type="text"
-                value={image}
-                onChange={(e) => setImage(e.target.value)}
+                value={books.image}
+                name="image"
+                onChange={handleInputChange}
                 className="form-control"
               />
             </div>
@@ -108,8 +113,9 @@ function CreateBook() {
               <label>Year:</label>
               <input
                 type="date"
-                value={year}
-                onChange={(e) => setYear(e.target.value)}
+                value={books.year}
+                name="year"
+                onChange={handleInputChange}
                 className="form-control"
               />
             </div>
@@ -117,8 +123,9 @@ function CreateBook() {
               <label>Rating:</label>
               <input
                 type="text"
-                value={rating}
-                onChange={(e) => setRating(e.target.value)}
+                value={books.rating}
+                name="rating"
+                onChange={handleInputChange}
                 className="form-control"
               />
             </div>
@@ -126,10 +133,23 @@ function CreateBook() {
               <label>Price:</label>
               <input
                 type="text"
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}
+                value={books.price}
+                name="price"
+                onChange={handleInputChange}
                 className="form-control"
               />
+            </div>
+            <div className="form-group">
+              <label>Type:</label>
+              <select
+                onChange={handleInputChange}
+                name="type"
+                value={books.type}
+              >
+                <option value={0}>All</option>
+                <option value={1}>Bestseller</option>
+                <option value={2}>Recommended</option>
+              </select>
             </div>
           </div>
           <div style={{ marginTop: "10px" }} className="modal-footer">

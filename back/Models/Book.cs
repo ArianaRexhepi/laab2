@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using back.Models.Enums;
 
 namespace back.Models
 {
@@ -12,8 +13,6 @@ namespace back.Models
         public Guid Id { get; set; }
         [Required]
         public string Title { get; set; }
-        [Required]
-        public string AuthorName { get; set; }
         [Required]
         public string Description { get; set; }
         [Required]
@@ -28,5 +27,6 @@ namespace back.Models
         public int Price { get; set; }
         public Author Author { get; set; }
         public Guid AuthorId { get; set; }
+        public BookType Type {get; set;} 
     }
 }

@@ -21,6 +21,15 @@ namespace back.Controllers
             _context = context;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetAllAuthors()
+        {
+            var authors = await _context.Authors.ToListAsync();   
+
+            return Ok(authors);
+        }
+        
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAuthor(Guid id)
         {

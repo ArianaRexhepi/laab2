@@ -45,7 +45,6 @@ namespace back.Controllers
             {
                 Id = new Guid(),
                 Title = book.Title,
-                AuthorName = book.AuthorName,
                 Category = book.Category,
                 Rating = book.Rating,
                 Description = book.Description,
@@ -70,7 +69,6 @@ namespace back.Controllers
             }
 
             existingBook.Title = books.Title;
-            existingBook.AuthorName = books.AuthorName;
             existingBook.Category = books.Category;
             existingBook.Rating = books.Rating;
             existingBook.Description = books.Description;
