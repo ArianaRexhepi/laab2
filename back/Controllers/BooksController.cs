@@ -1,6 +1,7 @@
 using back.Data;
 using back.DTO;
 using back.Models;
+using back.Models.Enums;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -23,7 +24,25 @@ namespace back.Controllers
         public async Task<IActionResult> GetAsync()
         {
             var books = await _context.Books.ToListAsync();
-            return Ok(books);
+
+            var bookListDto = new List<BookListDto>();
+            foreach (var book in books){
+                var author = await _context.Authors.FindAsync(book.AuthorId); 
+                var bookDto = new BookListDto{
+                    Id = book.Id,
+                    Title = book.Title,
+                    Description = book.Description,
+                    Category = book.Category,
+                    Rating = book.Rating,
+                    Year = book.Year,
+                    Image = book.Image,
+                    Price = book.Price,
+                    AuthorName = author.Name,
+                    Type = (BookType)book.Type
+                };
+                bookListDto.Add(bookDto);
+            }
+            return Ok(bookListDto);
         }
 
         [HttpGet("{id}")]

@@ -7,25 +7,17 @@ using back.Models.Enums;
 
 namespace back.DTO
 {
-    public class BookAddDto
+    public class BookListDto
     {
-        [Required]
+        public Guid Id { get; set; }
         public string Title { get; set; }
-        [Required]
-        public Guid AuthorId { get; set; }
-        [Required]
-        public int Type {get; set;}
-        [Required]
         public string Description { get; set; }
-        [Required]
         public string Category { get; set; }
-        [Required]
         public int Rating { get; set; }
-        [Required]
         public DateTime Year { get; set; }
-        [Required]
-        public string? Image { get; set; }
-        [Required]
+        public string Image { get; set; }
         public int Price { get; set; }
+        public string AuthorName { get; set; }
+        public BookType Type {get; set;} 
     }
 }

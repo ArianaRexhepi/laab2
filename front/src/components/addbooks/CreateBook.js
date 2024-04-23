@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import ReactQuill from "react-quill";
 
@@ -13,9 +13,27 @@ function CreateBook() {
     description: "",
     image: "",
     price: 0,
+    authorId: "",
   };
   const [books, setBooks] = useState(initalbooks);
   const [loading, setLoading] = useState(false);
+  const [authors, setAuthors] = useState([]);
+
+  useEffect(() => {
+    fetchAuthors();
+  }, []);
+
+  const fetchAuthors = async () => {
+    await axios
+      .get("/author")
+      .then((res) => {
+        setAuthors(res.data);
+        console.log(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const navigate = useNavigate();
 
@@ -70,23 +88,25 @@ function CreateBook() {
                 className="form-control"
               />
             </div>
-            {/* <div className="form-group">
+            <div className="form-group">
               <label>Author:</label>
-              <input
-                type="text"
-                name=""
-                value={authorName}
+              <select
                 onChange={handleInputChange}
-                className="form-control"
-              />
-            </div> */}
+                name="authorId"
+                value={books.authorId}
+              >
+                <option value="">Select Author</option>
+                {authors.map((author, index) => (
+                <option key={index} value={author.id}>{author.name}</option>
+                ))}
+              </select>
+            </div>
             <div className="form-group">
               <label>Description:</label>
               <ReactQuill
                 className="quill-editor"
                 value={books.description}
-                name="description"
-                onChange={handleInputChange}
+                onChange={(e)=> setBooks({...books, description:e})}
               />
             </div>
 

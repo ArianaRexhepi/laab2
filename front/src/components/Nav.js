@@ -44,8 +44,8 @@ function Nav() {
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="bestsellerlist">
-                    Bestseller List
+                  <a className="dropdown-item" href="authorlist">
+                    Author List
                   </a>
                 </li>
                 <li>

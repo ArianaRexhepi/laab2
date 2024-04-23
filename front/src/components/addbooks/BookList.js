@@ -13,10 +13,20 @@ function BookList() {
   useEffect(() => {
     const fetch = async () => {
       const res = await axios.get("/books");
+      console.log(res.data);
       setBooks(res.data);
     };
     fetch();
   }, []);
+
+  const formatType = (type) =>{
+      switch(type)
+      {
+        case 0: return "Book";
+        case 1: return "Bestseller";
+        case 2: return "Recommended";
+      }
+  }
 
   const handleDelete = async (id) => {
     const confirmed = window.confirm(
@@ -64,9 +74,10 @@ function BookList() {
         >
           <thead>
             <tr>
-              <th>ID</th>
+              {/* <th>ID</th> */}
               <th>Title</th>
               <th>Author</th>
+              <th>Type</th>
               <th>Category</th>
               <th>Description</th>
               <th>Image</th>
@@ -79,9 +90,10 @@ function BookList() {
           <tbody>
             {books.map((book) => (
               <tr key={book.id}>
-                <td>{book.id}</td>
+                {/* <td>{book.id}</td> */}
                 <td>{book.title}</td>
                 <td>{book.authorName}</td>
+                <td>{formatType(book.type)}</td>
                 <td>{book.category}</td>
                 <td>
                   {book.description.length > 150 ? (

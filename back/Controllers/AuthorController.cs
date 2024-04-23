@@ -46,7 +46,7 @@ namespace back.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddAuthor([FromBody] AuthorAddDto authorDto)
+        public async Task<IActionResult> AddAuthor(AuthorAddDto authorDto)
         {
             if (!ModelState.IsValid)
             {
@@ -67,6 +67,25 @@ namespace back.Controllers
             return CreatedAtAction(nameof(GetAuthor), new { id = author.Id }, author);
         }
 
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutAsync(Guid id, Author authors)
+        {
+            var existingAuthor = await _context.Authors.FindAsync(id);
+            if (existingAuthor == null)
+            {
+                return NotFound();
+            }
+
+            existingAuthor.Name = authors.Name;
+            existingAuthor.Genre = authors.Genre;
+            existingAuthor.Biography = authors.Biography;
+            existingAuthor.Image = authors.Image;
+
+
+            _context.SaveChanges();
+
+            return Ok();
+        }
         // [HttpPost("{authorId}/books")]
         // public async Task<IActionResult> AddBookForAuthor(Guid authorId, [FromBody] BookAddDto bookDto)
         // {
