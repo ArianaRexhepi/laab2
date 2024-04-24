@@ -2,19 +2,19 @@ using back.Data;
 using back.DTO;
 using back.Models;
 using Microsoft.AspNetCore.Mvc;
-
-
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Threading.Tasks;
 
 namespace back.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ReviewController : ControllerBase
+    public class ReviewsController : ControllerBase
     {
         private readonly AppDbContext _context;
 
-        public ReviewController(AppDbContext context)
+        public ReviewsController(AppDbContext context)
         {
             _context = context;
         }
@@ -22,68 +22,67 @@ namespace back.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAsync()
         {
-            var books = await _context.Review.ToListAsync();
-            return Ok(books);
+            var reviews = await _context.Reviews.ToListAsync();
+            return Ok(reviews);
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetBooksAsync(Guid id)
+        public async Task<IActionResult> GetReviewAsync(Guid id)
         {
-            var existingBook = await _context.Review.FindAsync(id);
-            if (existingBook == null)
+            var review = await _context.Reviews.FindAsync(id);
+            if (review == null)
             {
                 return NotFound();
             }
-            return Ok(existingBook);
+            return Ok(review);
         }
 
-
         [HttpPost]
-        public async Task<IActionResult> PostAsync(ReviewDto book)
+        public async Task<IActionResult> PostAsync(ReviewDto reviewDto)
         {
-            var newbook = new Review
+            var newReview = new Review
             {
-                Id = new Guid(),
-                BookId = book.BookId,
-                UserName = book.UserName,
-                Comment = book.Comment,
-                Rating = book.Rating,
-
+                Id = Guid.NewGuid(),
+                BookId = reviewDto.BookId,
+                UserName = reviewDto.UserName,
+                Comment = reviewDto.Comment,
+                Rating = reviewDto.Rating
             };
 
-            _context.Review.Add(newbook);
+            _context.Reviews.Add(newReview);
             await _context.SaveChangesAsync();
             return Ok();
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAsync(Guid id, Review books)
+        public async Task<IActionResult> PutAsync(Guid id, ReviewDto reviewDto)
         {
-            var existingBook = await _context.Review.FindAsync(id);
-            if (existingBook == null)
+            var existingReview = await _context.Reviews.FindAsync(id);
+            if (existingReview == null)
             {
                 return NotFound();
             }
 
-            existingBook.BookId = books.BookId;
-            existingBook.UserName = books.UserName;
-            existingBook.Comment = books.Comment;
-            existingBook.Rating = books.Rating;
+            existingReview.BookId = reviewDto.BookId;
+            existingReview.UserName = reviewDto.UserName;
+            existingReview.Comment = reviewDto.Comment;
+            existingReview.Rating = reviewDto.Rating;
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return Ok();
         }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(Guid id)
         {
-            var existingBook = await _context.Review.FindAsync(id);
-            if (existingBook == null)
+            var existingReview = await _context.Reviews.FindAsync(id);
+            if (existingReview == null)
             {
                 return NotFound();
             }
 
-            _context.Review.Remove(existingBook);
+            _context.Reviews.Remove(existingReview);
             await _context.SaveChangesAsync();
 
             return Ok();

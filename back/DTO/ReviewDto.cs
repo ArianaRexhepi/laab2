@@ -7,15 +7,17 @@ using System.Threading.Tasks;
 namespace back.DTO
 {
     public class ReviewDto
-    { 
+    {
         [Required]
-        public int BookId { get; set; }
+        public string BookId { get; set; } // Use the same data type as in Review
+
         [Required]
         public string UserName { get; set; }
+
         [Required]
         public string Comment { get; set; }
+
         [Required]
         public int Rating { get; set; }
-
     }
 }
