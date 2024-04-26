@@ -11,6 +11,7 @@ import EditMagazine from "./addmagazine/EditMagazine";
 import CreateMagazine from './addmagazine/CreateMagazine';
 import CreateReview from "./addReview/CreateReview";
 import ReviewList from "./addReview/ReviewList";
+import EditReview from "./addReview/EditReview";
 const Pages = () =>{
     return(
         <>
@@ -26,6 +27,7 @@ const Pages = () =>{
         <Route path="/editmagazine/:id" element={<EditMagazine />} />
         <Route path="/createreview" element={<CreateReview />} />
         <Route path="/reviewlist" element={<ReviewList/>} />
+        <Route path="/editreview/:id" element={<EditReview />} />
         </Routes>
         </>
     );

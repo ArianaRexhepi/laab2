@@ -9,8 +9,8 @@ namespace back.DTO
     public class ReviewDto
     {
         [Required]
-        public string BookId { get; set; } // Use the same data type as in Review
-
+        public string BookId { get; set; } 
+        
         [Required]
         public string UserName { get; set; }
 

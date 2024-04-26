@@ -22,14 +22,18 @@ function CreateReview() {
       rating: rating,
     };
 
-    try {
-      await axios.post("/reviews", reviewData);
-      navigate("/reviewlist");
-    } catch (error) {
-      console.error("Error creating review:", error);
-    } finally {
-      setLoading(false);
-    }
+    console.log(reviewData);
+    await axios
+      .post("/reviews", reviewData)
+      .then(() => {
+        navigate("/reviewlist");
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (

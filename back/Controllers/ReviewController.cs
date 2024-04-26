@@ -1,10 +1,12 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using back.Data;
 using back.DTO;
 using back.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Threading.Tasks;
 
 namespace back.Controllers
 {
@@ -22,8 +24,12 @@ namespace back.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAsync()
         {
-            var reviews = await _context.Reviews.ToListAsync();
-            return Ok(reviews);
+            try
+            {
+                var reviews = await _context.Reviews.ToListAsync();
+                return Ok(reviews);
+            }
+        
         }
 
         [HttpGet("{id}")]

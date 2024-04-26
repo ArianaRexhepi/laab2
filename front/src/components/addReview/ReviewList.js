@@ -11,12 +11,8 @@ function ReviewList() {
 
   useEffect(() => {
     const fetchReviews = async () => {
-      try {
         const res = await axios.get("/reviews");
         setReviews(res.data);
-      } catch (error) {
-        console.error("Error fetching reviews:", error);
-      }
     };
     fetchReviews();
   }, []);
@@ -58,8 +54,8 @@ function ReviewList() {
           <thead>
             <tr>
               <th>ID</th>
-              <th>User Name</th>
               <th>Book ID</th>
+              <th>User Name</th>
               <th>Comment</th>
               <th>Rating</th>
               <th>Actions</th>
@@ -69,8 +65,8 @@ function ReviewList() {
             {reviews.map((review) => (
               <tr key={review.id}>
                 <td>{review.id}</td>
-                <td>{review.userName}</td>
                 <td>{review.bookId}</td>
+                <td>{review.userName}</td>
                 <td>
                   {review.comment.length > 150 ? (
                     <div>
