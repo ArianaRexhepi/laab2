@@ -38,21 +38,15 @@ namespace back.Controllers
         {
             //qetu e merr autorin edhe ja shtin ose bookit autorin dmth t vyn ni autorId pej frontit
 
-            var history = await _context.Authors.FindAsync(history.UserId);
-            if (author == null) return BadRequest("Author Doesn't exist");
+            // var history = await _context.Authors.FindAsync(history.UserId);
+            // if (author == null) return BadRequest("Author Doesn't exist");
 
             var newbook = new Book
             {
                 Id = new Guid(),
-                Title = book.Title,
-                Author = author,
-                AuthorId = author.Id,
-                Category = book.Category,
-                Rating = book.Rating,
-                Description = book.Description,
-                Image = book.Image,
-                Year = book.Year,
-                Price = book.Price
+                // Title = history.Title,
+                // Author = author,
+               
 
             };
 
